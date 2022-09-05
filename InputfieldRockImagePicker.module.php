@@ -14,7 +14,9 @@ class InputfieldRockImagePicker extends InputfieldText {
       'version' => '0.0.1',
       'summary' => 'Inputfield for picking image from other pages',
       'icon' => 'link',
-      'requires' => [],
+      'requires' => [
+        'FieldtypeRockImagePicker',
+      ],
       'installs' => [],
     ];
   }
@@ -34,7 +36,7 @@ class InputfieldRockImagePicker extends InputfieldText {
     $f->value = $this->value;
 
     // get images
-    $images = $sourcepage->getFormatted($sourcefield);
+    $images = $sourcepage->getUnformatted($sourcefield);
     foreach($images as $img) {
       $f->addOption($img->basename, $img->basename, [
         'data-img-src' => $img->url,

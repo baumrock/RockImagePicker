@@ -9,7 +9,7 @@ class FieldtypeRockImagePicker extends FieldtypeText {
   public static function getModuleInfo() {
     return [
       'title' => 'RockImagePicker',
-      'version' => '0.0.2',
+      'version' => '0.0.3',
       'summary' => 'Fieldtype to select an image from another page',
       'icon' => 'link',
       'requires' => [],
@@ -35,7 +35,7 @@ class FieldtypeRockImagePicker extends FieldtypeText {
      */
     public function ___formatValue(Page $page, Field $field, $value) {
       $sourcepage = $this->wire->pages->get($field->sourcepage);
-      $icons = $sourcepage->getFormatted($field->sourcefield);
+      $icons = $sourcepage->getUnformatted($field->sourcefield);
       return $icons->get("name=$value");
     }
 
